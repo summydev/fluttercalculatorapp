@@ -71,12 +71,12 @@ class _CalculatorScreenAppState extends State<CalculatorScreenApp> {
           Expanded(
               child: Container(
             padding: EdgeInsets.all(10),
-            // decoration: const BoxDecoration(
-            //     color: Colors.white,
-            //     borderRadius: BorderRadius.only(
-            //       topRight: Radius.circular(15.0),
-            //       topLeft: Radius.circular(15.0),
-            //     )),
+            decoration: const BoxDecoration(
+                color: Color(0xff2A2D37),
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(18.0),
+                  topLeft: Radius.circular(1.0),
+                )),
             child: GridView.builder(
                 itemCount: _buttonList.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -94,7 +94,7 @@ class _CalculatorScreenAppState extends State<CalculatorScreenApp> {
 
   Widget CustomButton(String text) {
     return InkWell(
-      splashColor: Color(0xff282B33),
+      splashColor: Colors.green,
       onTap: () {
         setState(() {
           handleButtons(text);

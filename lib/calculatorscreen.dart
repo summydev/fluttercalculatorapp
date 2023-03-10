@@ -71,13 +71,9 @@ class _CalculatorScreenAppState extends State<CalculatorScreenApp> {
           Expanded(
               child: Container(
             padding: EdgeInsets.all(10),
-            decoration: const BoxDecoration(
-                color: Color(0xff2A2D37),
-                borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(18.0),
-                  topLeft: Radius.circular(1.0),
-                )),
+           
             child: GridView.builder(
+              
                 itemCount: _buttonList.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 4,

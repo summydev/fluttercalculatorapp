@@ -41,7 +41,7 @@ class _CalculatorScreenAppState extends State<CalculatorScreenApp> {
       body: Column(
         children: [
           SizedBox(
-            height: MediaQuery.of(context).size.height / 3,
+            height: MediaQuery.of(context).size.height / 2.5,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -65,28 +65,28 @@ class _CalculatorScreenAppState extends State<CalculatorScreenApp> {
                     ),
                   ),
                 ),
-                Expanded(
-                    child: Container(
-                  padding: EdgeInsets.all(10),
-                  // decoration: const BoxDecoration(
-                  //     color: Colors.white,
-                  //     borderRadius: BorderRadius.only(
-                  //       topRight: Radius.circular(15.0),
-                  //       topLeft: Radius.circular(15.0),
-                  //     )),
-                  child: GridView.builder(
-                      itemCount: _buttonList.length,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 4,
-                          crossAxisSpacing: 12,
-                          mainAxisSpacing: 12),
-                      itemBuilder: (BuildContext context, int index) {
-                        return CustomButton(_buttonList[index]);
-                      }),
-                ))
               ],
             ),
-          )
+          ),
+          Expanded(
+              child: Container(
+            padding: EdgeInsets.all(10),
+            // decoration: const BoxDecoration(
+            //     color: Colors.white,
+            //     borderRadius: BorderRadius.only(
+            //       topRight: Radius.circular(15.0),
+            //       topLeft: Radius.circular(15.0),
+            //     )),
+            child: GridView.builder(
+                itemCount: _buttonList.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 4,
+                    crossAxisSpacing: 12,
+                    mainAxisSpacing: 12),
+                itemBuilder: (BuildContext context, int index) {
+                  return CustomButton(_buttonList[index]);
+                }),
+          )),
         ],
       ),
     );

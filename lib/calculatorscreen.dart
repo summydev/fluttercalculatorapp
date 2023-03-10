@@ -9,6 +9,11 @@ class CalculatorScreenApp extends StatefulWidget {
   State<CalculatorScreenApp> createState() => _CalculatorScreenAppState();
 }
 
+bool iconBool = false;
+
+IconData _iconLight = Icons.sunny;
+IconData _iconDark = Icons.cloud;
+
 class _CalculatorScreenAppState extends State<CalculatorScreenApp> {
   String userInput = "";
   String result = "0";
@@ -45,6 +50,12 @@ class _CalculatorScreenAppState extends State<CalculatorScreenApp> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
+                IconButton(
+                  onPressed: () {
+                    iconBool ? _iconLight : _iconDark;
+                  },
+                  icon: Icon(Icons.sunny),
+                ),
                 Container(
                   padding: EdgeInsets.all(20),
                   alignment: Alignment.centerRight,
@@ -71,9 +82,7 @@ class _CalculatorScreenAppState extends State<CalculatorScreenApp> {
           Expanded(
               child: Container(
             padding: EdgeInsets.all(10),
-           
             child: GridView.builder(
-              
                 itemCount: _buttonList.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 4,
@@ -125,21 +134,22 @@ class _CalculatorScreenAppState extends State<CalculatorScreenApp> {
         text == "*" ||
         text == "+" ||
         text == "-" ||
-        text == "C" ||
-        text == "(" ||
-        text == ")") {
-      return Color.fromARGB(255, 197, 121, 124);
+        text == "=") {
+      return Color(0xffE0898B);
+    }
+    if (text == "AC" || text == "(" || text == ")") {
+      return Color(0xff56D6C4);
     }
     return Colors.white;
   }
 
   getBGcolor(String text) {
-    if (text == "AC") {
-      return Color.fromARGB(255, 252, 100, 100);
-    }
-    if (text == "=") {
-      return Color.fromARGB(255, 104, 204, 159);
-    }
+    // if (text == "AC") {
+    //   return Color.fromARGB(255, 252, 100, 100);
+    // }
+    // if (text == "=") {
+    //   return Color.fromARGB(255, 104, 204, 159);
+    // }
     return Color(0xff1d2630);
   }
 

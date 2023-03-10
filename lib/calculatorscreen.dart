@@ -42,26 +42,33 @@ class _CalculatorScreenAppState extends State<CalculatorScreenApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff22252D),
+      backgroundColor: iconBool ? Colors.white : Color(0xff22252D),
       body: Column(
         children: [
           SizedBox(
-            height: MediaQuery.of(context).size.height / 2.5,
+            height: MediaQuery.of(context).size.height / 2.8,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 IconButton(
                   onPressed: () {
-                    iconBool ? _iconLight : _iconDark;
+                    setState(() {
+                      iconBool = !iconBool;
+                    });
                   },
-                  icon: Icon(Icons.sunny),
+                  icon: Icon(
+                    iconBool ? _iconDark : _iconLight,
+                    color: iconBool ? Color(0xff22252D) : Colors.white,
+                  ),
                 ),
                 Container(
                   padding: EdgeInsets.all(20),
                   alignment: Alignment.centerRight,
                   child: Text(
                     userInput,
-                    style: TextStyle(fontSize: 32, color: Colors.white),
+                    style: TextStyle(
+                        fontSize: 32,
+                        color: iconBool ? Color(0xff22252D) : Colors.white),
                   ),
                 ),
                 Container(
@@ -72,7 +79,7 @@ class _CalculatorScreenAppState extends State<CalculatorScreenApp> {
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 48,
-                      color: Colors.white,
+                      color: iconBool ? Color(0xff22252D) : Colors.white,
                     ),
                   ),
                 ),
@@ -111,7 +118,9 @@ class _CalculatorScreenAppState extends State<CalculatorScreenApp> {
             borderRadius: BorderRadius.circular(10),
             boxShadow: [
               BoxShadow(
-                  color: Colors.white.withOpacity(0.1),
+                  color: iconBool
+                      ? Color.fromARGB(255, 14, 5, 46).withOpacity(0.1)
+                      : Colors.white.withOpacity(0.1),
                   blurRadius: 4,
                   spreadRadius: 0.5,
                   offset: Offset(-3, -3))
@@ -140,17 +149,11 @@ class _CalculatorScreenAppState extends State<CalculatorScreenApp> {
     if (text == "AC" || text == "(" || text == ")") {
       return Color(0xff56D6C4);
     }
-    return Colors.white;
+    return iconBool ? Color(0xff22252D) : Colors.white;
   }
 
   getBGcolor(String text) {
-    // if (text == "AC") {
-    //   return Color.fromARGB(255, 252, 100, 100);
-    // }
-    // if (text == "=") {
-    //   return Color.fromARGB(255, 104, 204, 159);
-    // }
-    return Color(0xff1d2630);
+    return iconBool ? Colors.white : Color(0xff22252D);
   }
 
   handleButtons(String text) {
